@@ -55,6 +55,7 @@ public class PanelCarrito extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -75,6 +76,7 @@ public class PanelCarrito extends javax.swing.JDialog {
         btnFinalCompra.setBackground(new java.awt.Color(102, 255, 51));
         btnFinalCompra.setForeground(new java.awt.Color(0, 0, 0));
         btnFinalCompra.setText("Finalizar compra");
+        btnFinalCompra.setToolTipText("Finalizar compra");
         btnFinalCompra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnFinalCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFinalCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +88,7 @@ public class PanelCarrito extends javax.swing.JDialog {
         btnBorrar.setBackground(new java.awt.Color(198, 40, 40));
         btnBorrar.setForeground(new java.awt.Color(0, 0, 0));
         btnBorrar.setText("Eliminar fila");
+        btnBorrar.setToolTipText("Eliminar Fila");
         btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +236,7 @@ public class PanelCarrito extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(158, 158, 158));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/atras.png"))); // NOI18N
+        jButton1.setToolTipText("Atras");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

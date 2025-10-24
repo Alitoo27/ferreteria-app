@@ -36,7 +36,6 @@ public class Distribuidor implements Serializable {
     }
 
     // Getters y Setters
-
     public int getIdDistribuidor() {
         return idDistribuidor;
     }
@@ -113,7 +112,7 @@ public class Distribuidor implements Serializable {
     public String toString() {
         return this.nombreDistri;
     }
-    
-    
-    
+
+   
+
 }
