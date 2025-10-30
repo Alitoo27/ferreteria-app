@@ -5,7 +5,10 @@ import com.mycompany.ferreteria.logica.Distribuidor;
 import com.mycompany.ferreteria.logica.Producto;
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -90,13 +93,13 @@ public class PanelVerProductos extends javax.swing.JFrame {
         });
 
         panelPrin.setBackground(new java.awt.Color(250, 250, 250));
-        panelPrin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelPrin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelPrin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaProductos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        tablaProductos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -597,7 +600,7 @@ public class PanelVerProductos extends javax.swing.JFrame {
         String cantidadStr = txtCantidad.getText().trim();
         String precioListaStr = txtPrecioLista.getText().trim();
         String stockMinStr = txtStockMin.getText().trim();
-        
+
         String nombreSeleccionado = (String) cmbDistribuidor.getSelectedItem();
         Distribuidor distribuidor = null;
 
@@ -721,7 +724,8 @@ public class PanelVerProductos extends javax.swing.JFrame {
         };
         tablaModelo.setColumnIdentifiers(titulos);
         List<Producto> listaProducto = control.traerProductos();
-
+        listaProducto = eliminarDuplicadosProductos(listaProducto);
+        
         if (listaProducto != null) {
             for (Producto produ : listaProducto) {
                 // si no tiene un distribuidor asignado, se mostrara "Sin distribuidor"
@@ -917,6 +921,21 @@ public class PanelVerProductos extends javax.swing.JFrame {
             cmbDistribuidor.setSelectedIndex(0); // selecciona "-" si no encuentra coincidencia
         }
 
+    }
+
+    private List<Producto> eliminarDuplicadosProductos(List<Producto> lista) {
+        List<Producto> listaSinDuplicados = new ArrayList<>();
+        Set<String> nombresVistos = new HashSet<>();
+
+        for (Producto p : lista) {
+            String clave = p.getNombre().trim().toLowerCase() + "|"
+                    + (p.getDistribuidor() != null ? p.getDistribuidor().getNombre().trim().toLowerCase() : "");
+            if (!nombresVistos.contains(clave)) {
+                nombresVistos.add(clave);
+                listaSinDuplicados.add(p);
+            }
+        }
+        return listaSinDuplicados;
     }
 
 }

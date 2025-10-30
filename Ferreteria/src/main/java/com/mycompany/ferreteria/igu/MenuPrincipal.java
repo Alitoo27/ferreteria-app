@@ -22,7 +22,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pbsuperior = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnMinimizar = new javax.swing.JButton();
-        btnDB = new javax.swing.JButton();
+        btnBaseDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -31,6 +31,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,10 +110,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        btnDB.setToolTipText("Importar/Exportar Base de Datos");
-        btnDB.addActionListener(new java.awt.event.ActionListener() {
+        btnBaseDatos.setBackground(new java.awt.Color(158, 158, 158));
+        btnBaseDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/baseDatos.png"))); // NOI18N
+        btnBaseDatos.setToolTipText("Exportar/Importar Base de Datos");
+        btnBaseDatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBaseDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDBActionPerformed(evt);
+                btnBaseDatosActionPerformed(evt);
             }
         });
 
@@ -130,12 +134,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnDistribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 262, Short.MAX_VALUE)
-                .addComponent(btnDB, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(258, 258, 258))
+                            .addComponent(jbtnDistribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(btnBaseDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +150,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jbtnVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jbtnDistribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnDB, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btnBaseDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,15 +211,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_btnMinimizarActionPerformed
 
-    private void btnDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDBActionPerformed
-        panelBaseDatos pantalla = new panelBaseDatos();
+    private void btnBaseDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaseDatosActionPerformed
+        PanelExportImportPrinc pantalla = new PanelExportImportPrinc();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnDBActionPerformed
+    }//GEN-LAST:event_btnBaseDatosActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDB;
+    private javax.swing.JButton btnBaseDatos;
     private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

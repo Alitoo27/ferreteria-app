@@ -3,7 +3,10 @@ package com.mycompany.ferreteria.igu;
 import com.mycompany.ferreteria.logica.Controladora;
 import com.mycompany.ferreteria.logica.Distribuidor;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -74,6 +77,7 @@ public class PanelDistribuidores extends javax.swing.JFrame {
         });
 
         panelPrin.setBackground(new java.awt.Color(250, 250, 250));
+        panelPrin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelPrin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
@@ -253,6 +257,7 @@ public class PanelDistribuidores extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(250, 250, 250));
 
+        tablaDistribuidores.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaDistribuidores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -366,13 +371,13 @@ public class PanelDistribuidores extends javax.swing.JFrame {
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnMinimizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAtras1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAtras1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         panelPrin.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 40));
@@ -566,7 +571,8 @@ public class PanelDistribuidores extends javax.swing.JFrame {
         tablaModelo.setColumnIdentifiers(titulos);
         // traemos los distribuidores de la DB y los cargamos en la tabla
         List<Distribuidor> listaDistribuidor = control.traerDistribuidores();
-
+        listaDistribuidor = eliminarDuplicadosDistribuidores(listaDistribuidor);
+        
         if (listaDistribuidor != null) {
             for (Distribuidor distri : listaDistribuidor) {
                 Object[] objeto = {
@@ -679,4 +685,18 @@ public class PanelDistribuidores extends javax.swing.JFrame {
     private void habilitarCancelar(){
         btnCancelar.setEnabled(true); 
     }
+    
+    private List<Distribuidor> eliminarDuplicadosDistribuidores(List<Distribuidor> lista) {
+    List<Distribuidor> listaSinDuplicados = new ArrayList<>();
+    Set<String> nombresVistos = new HashSet<>();
+
+    for (Distribuidor d : lista) {
+        String nombre = d.getNombre().trim().toLowerCase();
+        if (!nombresVistos.contains(nombre)) {
+            nombresVistos.add(nombre);
+            listaSinDuplicados.add(d);
+        }
+    }
+    return listaSinDuplicados;
+}
 }

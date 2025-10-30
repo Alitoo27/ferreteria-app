@@ -66,6 +66,7 @@ public class PanelCarrito extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrin.setBackground(new java.awt.Color(0, 0, 255));
+        panelPrin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelPrin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(250, 250, 250));
@@ -130,6 +131,7 @@ public class PanelCarrito extends javax.swing.JDialog {
 
         panelPrin.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 450, 100));
 
+        tablaCarrito.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         tablaCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
