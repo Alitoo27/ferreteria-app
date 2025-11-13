@@ -10,6 +10,88 @@
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    
+    <build>
+        <finalName>ferreteria</finalName>
+        <plugins>
+
+            <!-- 1️⃣ Plugin que genera el .jar con dependencias -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>            
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>           
+                    <archive>
+                        <manifest>
+                            <mainClass>com.mycompany.ferreteria.ferreteria</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase> 
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- 2️⃣ Plugin que genera el ejecutable .exe -->
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>l4j-clui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Nombre del ejecutable generado -->
+                    <outfile>${project.build.directory}/Ferreteria.exe</outfile>
+
+                    <!-- JAR con dependencias -->
+                    <jar>${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar</jar>
+
+                    <!-- Clase principal -->
+                    <mainClass>com.mycompany.ferreteria.ferreteria</mainClass>
+
+                    <!-- Icono -->
+                    <icon>src/main/resources/iconos/icono.ico</icon>
+                    
+                    <headerType>gui</headerType>
+
+                    <!-- Configuración del JRE -->
+                    <jre>
+                        <path>jre</path> <!-- Carpeta local donde copies un JRE portable -->
+                        <minVersion>1.8.0</minVersion>
+                    </jre>
+
+                    <errTitle>Error al iniciar Ferretería</errTitle>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    
     <name>Ferreteria</name>
     <repositories>
         <repository>
