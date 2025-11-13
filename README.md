@@ -29,7 +29,7 @@ La aplicación permite administrar productos, distribuidores y realizar ventas a
 - **Lenguaje:** Java  
 - **Framework:** Swing (Java GUI)  
 - **Persistencia:** JPA (EclipseLink)  
-- **Base de datos:** MySQL  
+- **Base de datos:** SQLite  
 - **IDE:** NetBeans 
 
 ---
