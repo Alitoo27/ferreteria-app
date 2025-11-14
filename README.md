@@ -21,6 +21,18 @@ La aplicación permite administrar productos, distribuidores y realizar ventas a
   - Selección de productos desde la tabla principal.
   - Agregar al carrito con cantidad y cálculo de importe.
   - Finalización de compra con actualización automática de stock.
+    
+- **Importacion y exportacion de base de datos**
+  Sin MySQL ni servidores externos.
+  Todo se guarda en db_ferreteria.sqlite
+  - Exportación de toda la base de datos a un archivo .txt.
+  - Importación desde .txt, con control para evitar duplicados.
+  - Seguridad ante datos repetidos o incompletos.
+    
+- **Instalador y ejecución**
+  - Generación del .exe utilizando Launch4j.
+  - Instalador profesional construido con Inno Setup.
+  - El sistema incluye un JRE embebido, permitiendo ejecutarlo sin instalar Java en la computadora.
 
 ---
 
